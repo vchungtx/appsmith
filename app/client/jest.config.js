@@ -82,7 +82,7 @@ module.exports = {
         ceKey: parseConfig("__APPSMITH_SEGMENT_CE_KEY__"),
       },
       newRelic: {
-        enableNewRelic: parseConfig("__APPSMITH_NEW_RELIC_ACCOUNT_ENABLE__"),
+        enableNewRelic: false,
         accountId: parseConfig("__APPSMITH_NEW_RELIC_ACCOUNT_ID__"),
         applicationId: parseConfig("__APPSMITH_NEW_RELIC_APPLICATION_ID__"),
         browserAgentlicenseKey: parseConfig(

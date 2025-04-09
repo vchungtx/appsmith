@@ -23,10 +23,10 @@ export const APPSMITH_BRAND_PRIMARY_COLOR =
   ) || DEFAULT_BRANDING_PRIMARY_COLOR;
 export const APPSMITH_BRAND_BG_COLOR = "#F1F5F9";
 export const APPSMITH_BRAND_FAVICON_URL = getAssetUrl(
-  `${ASSETS_CDN_URL}/appsmith-favicon-orange.ico`,
+  `/static/img/favicon.ico`,
 );
 export const APPSMITH_BRAND_LOGO_URL = getAssetUrl(
-  `${ASSETS_CDN_URL}/appsmith-logo-no-margin.png`,
+  `/static/img/logo.png`,
 );
 
 /**

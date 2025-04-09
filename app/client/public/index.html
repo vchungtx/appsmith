@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>Appsmith</title>
+    <title>Natcash</title>
     <style>
       #loader {
         position: fixed;
@@ -231,18 +231,6 @@
         observability: {
           deploymentName: parseConfig('{{env "APPSMITH_DEPLOYMENT_NAME"}}') || "self-hosted",
           serviceInstanceId: parseConfig('{{env "HOSTNAME"}}') || "appsmith-0",
-        },
-        newRelic:{
-          enableNewRelic: parseConfig('{{env "APPSMITH_NEW_RELIC_ACCOUNT_ENABLE"}}'),
-          accountId: parseConfig('{{env "APPSMITH_NEW_RELIC_ACCOUNT_ID"}}'),
-          applicationId: parseConfig('{{env "APPSMITH_NEW_RELIC_APPLICATION_ID"}}'),
-          browserAgentlicenseKey: parseConfig('{{env "APPSMITH_NEW_RELIC_BROWSER_AGENT_LICENSE_KEY"}}'),
-          browserAgentEndpoint: parseConfig('{{env "APPSMITH_NEW_RELIC_BROWSER_AGENT_ENDPOINT"}}'),
-          otlpLicenseKey: parseConfig('{{env "APPSMITH_NEW_RELIC_OTLP_LICENSE_KEY"}}'),
-          //OTLP following the naming convention of Sdk initialisation
-          otlpServiceName: parseConfig('{{env "APPSMITH_NEW_RELIC_OTEL_SERVICE_NAME"}}'),
-          otlpEndpoint:parseConfig('{{env "APPSMITH_NEW_RELIC_OTEL_EXPORTER_OTLP_ENDPOINT"}}'),
-
         },
         fusioncharts: {
           licenseKey: parseConfig('{{env "APPSMITH_FUSIONCHARTS_LICENSE_KEY"}}'),

@@ -100,7 +100,7 @@ export const getConfigsFromEnvVars = (): INJECTED_CONFIGS => {
       serviceInstanceId: process.env.HOSTNAME || "appsmith-0",
     },
     newRelic: {
-      enableNewRelic: !!process.env.APPSMITH_NEW_RELIC_ACCOUNT_ENABLE,
+      enableNewRelic: false,
       accountId: process.env.APPSMITH_NEW_RELIC_ACCOUNT_ID || "",
       applicationId: process.env.APPSMITH_NEW_RELIC_APPLICATION_ID || "",
       browserAgentlicenseKey:
@@ -248,11 +248,11 @@ export const getAppsmithConfigs = (): AppsmithUIConfigs => {
   );
 
   // We enable segment tracking if either the Cloud API key is set or the self-hosted CE key is set
-  segment.enabled = segment.enabled || segmentCEKey.enabled;
+  segment.enabled = false;
 
   return {
     sentry: {
-      enabled: sentryDSN.enabled && sentryRelease.enabled && sentryENV.enabled,
+      enabled: false,
       dsn: sentryDSN.value,
       release: sentryRelease.value,
       environment: sentryENV.value,
@@ -260,7 +260,7 @@ export const getAppsmithConfigs = (): AppsmithUIConfigs => {
       tracesSampleRate: 0.1,
     },
     smartLook: {
-      enabled: smartLook.enabled,
+      enabled: false,
       id: smartLook.value,
     },
     segment: {
@@ -270,8 +270,6 @@ export const getAppsmithConfigs = (): AppsmithUIConfigs => {
     },
     newRelic: {
       enableNewRelic:
-        ENV_CONFIG.newRelic.enableNewRelic ||
-        APPSMITH_FEATURE_CONFIGS?.newRelic.enableNewRelic ||
         false,
       accountId: newRelicAccountId.value,
       applicationId: newRelicApplicationId.value,

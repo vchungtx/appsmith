@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 import { getTenantConfig } from "ee/selectors/tenantSelectors";
 import { getAssetUrl } from "ee/utils/airgapHelpers";
-import LeftSideContent from "./LeftSideContent";
 import { getAppsmithConfigs } from "ee/configs";
 import { useIsMobileDevice } from "utils/hooks/useDeviceDetect";
 import styled from "styled-components";
@@ -49,7 +48,7 @@ function Container(props: ContainerProps) {
       className={`gap-14 my-auto flex items-center justify-center min-w-min`}
       data-testid={testId}
     >
-      {cloudHosting && !isMobileDevice && <LeftSideContent />}
+      {cloudHosting && !isMobileDevice}
       <BoxWrapper
         className={`t--login-container ${
           isMobileDevice ? "w-full" : "w-[min(400px,80%)]"
