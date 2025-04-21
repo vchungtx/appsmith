@@ -21,6 +21,7 @@ import { getIsCreatingApplicationByWorkspaceId } from "ee/selectors/applicationS
 import { getIsFetchingApplications } from "ee/selectors/selectedWorkspaceSelectors";
 import { hasCreateNewAppPermission } from "ee/utils/permissionHelpers";
 import { isAirgapped } from "ee/utils/airgapHelpers";
+import { getCurrentUser } from "../../../selectors/usersSelectors";
 
 export interface WorkspaceActionProps {
   workspace: Workspace;
@@ -43,6 +44,7 @@ function WorkspaceAction({
 }: WorkspaceActionProps) {
   const [isActionMenuOpen, setIsActionMenuOpen] = useState(false);
   const isFetchingApplications = useSelector(getIsFetchingApplications);
+  const currentUser = useSelector(getCurrentUser);
   const isCreatingApplication = Boolean(
     useSelector(getIsCreatingApplicationByWorkspaceId(workspace.id)),
   );
@@ -60,8 +62,17 @@ function WorkspaceAction({
 
   const hasCreateNewApplicationPermission =
     hasCreateNewAppPermission(workspace.userPermissions) && !isMobile;
+  const allowedDomains = ["ringme.vn", "viettel.com.vn"];
+  const userEmail = currentUser?.email || "";
+  const userDomain = userEmail.split("@")[1];
+  const isAllowed = allowedDomains.includes(userDomain);
 
-  if (!hasCreateNewApplicationPermission || isFetchingApplications) return null;
+  if (
+    !hasCreateNewApplicationPermission ||
+    isFetchingApplications ||
+    !isAllowed
+  )
+    return null;
 
   return (
     <Menu

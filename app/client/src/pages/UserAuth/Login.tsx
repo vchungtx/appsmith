@@ -139,7 +139,7 @@ export function Login(props: LoginFormProps) {
     forgotPasswordURL += `?email=${props.emailValue}`;
   }
 
-  const footerSection = isFormLoginEnabled && (
+  const footerSection = isFormLoginEnabled && false && (
     <div className="px-2 flex align-center justify-center text-center text-[color:var(--ads-v2\-color-fg)] text-[14px]">
       {createMessage(NEW_TO_APPSMITH)}&nbsp;
       <Link

@@ -186,27 +186,27 @@ export const getAppsmithConfigs = (): AppsmithUIConfigs => {
   );
   const newRelicAccountId = getConfig(
     ENV_CONFIG.newRelic.accountId,
-    APPSMITH_FEATURE_CONFIGS?.newRelic.accountId,
+    "",
   );
   const newRelicApplicationId = getConfig(
     ENV_CONFIG.newRelic.applicationId,
-    APPSMITH_FEATURE_CONFIGS?.newRelic.applicationId,
+    "",
   );
   const newRelicBrowserLicenseKey = getConfig(
     ENV_CONFIG.newRelic.browserAgentlicenseKey,
-    APPSMITH_FEATURE_CONFIGS?.newRelic.browserAgentlicenseKey,
+    "",
   );
   const newRelicBrowserAgentEndpoint = getConfig(
     ENV_CONFIG.newRelic.browserAgentEndpoint,
-    APPSMITH_FEATURE_CONFIGS?.newRelic.browserAgentEndpoint,
+    "",
   );
   const newRelicOtlpLicenseKey = getConfig(
     ENV_CONFIG.newRelic.otlpLicenseKey,
-    APPSMITH_FEATURE_CONFIGS?.newRelic.otlpLicenseKey,
+    "",
   );
   const newRelicOtlpEndpoint = getConfig(
     ENV_CONFIG.newRelic.otlpEndpoint,
-    APPSMITH_FEATURE_CONFIGS?.newRelic.otlpEndpoint,
+    "",
   );
   const fusioncharts = getConfig(
     ENV_CONFIG.fusioncharts.licenseKey,
@@ -269,8 +269,7 @@ export const getAppsmithConfigs = (): AppsmithUIConfigs => {
       ceKey: segmentCEKey.value,
     },
     newRelic: {
-      enableNewRelic:
-        false,
+      enableNewRelic: false,
       accountId: newRelicAccountId.value,
       applicationId: newRelicApplicationId.value,
       browserAgentlicenseKey: newRelicBrowserLicenseKey.value,
@@ -302,10 +301,7 @@ export const getAppsmithConfigs = (): AppsmithUIConfigs => {
       enabled: segment.enabled,
       apiKey: mixpanel.value,
     },
-    cloudHosting:
-      ENV_CONFIG.cloudHosting ||
-      APPSMITH_FEATURE_CONFIGS?.cloudHosting ||
-      false,
+    cloudHosting: false,
     logLevel:
       ENV_CONFIG.logLevel || APPSMITH_FEATURE_CONFIGS?.logLevel || false,
     appVersion: {

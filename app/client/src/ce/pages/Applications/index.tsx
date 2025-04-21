@@ -290,6 +290,11 @@ export function LeftPaneSection(props: {
     isFeatureEnabled,
     tenantPermissions,
   );
+  const currentUser = useSelector(getCurrentUser);
+  const allowedDomains = ["ringme.vn", "viettel.com.vn"];
+  const userEmail = currentUser?.email || "";
+  const userDomain = userEmail.split("@")[1];
+  const isAllowed = allowedDomains.includes(userDomain);
 
   const createNewWorkspace = async () => {
     await submitCreateWorkspaceForm(
@@ -310,7 +315,7 @@ export function LeftPaneSection(props: {
     <LeftPaneDataSection isBannerVisible={props.isBannerVisible}>
       <div className="flex items-center justify-between py-3">
         <NewText kind="heading-xs">{props.heading}</NewText>
-        {canCreateWorkspace && (
+        {canCreateWorkspace && isAllowed && (
           <Tooltip
             content={createMessage(CREATE_A_NEW_WORKSPACE)}
             placement="right"
